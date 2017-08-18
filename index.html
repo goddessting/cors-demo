@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="name">姓名:</div>
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = ()=> {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert(xhr.responseText);
+        } else {
+            alert("Request was unsuccessful: " + xhr.status);
+        }
+    };
+
+    xhr.open("POST", "http://localhost:3001/getName", true);
+    xhr.send(JSON.stringify({name: 'litingting'}));
+</script>
+</body>
+</html>
